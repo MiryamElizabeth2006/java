@@ -15,13 +15,15 @@ public class TestCalculadora {
 		resultadoResta = calcu.restar(12 ,2);
 		resultadoMultiplicacion = calcu.multiplicar(10, 5);
 		resultadoDividir = calcu.dividir(10, 2);
-		promedio = calcu.promediar(10, 8, 9);		
+		promedio = calcu.promediar(10, 8, 9);
+		
 		
 		System.out.println("RESULTADO SUMA: "+resultadoSuma);
 		System.out.println("RESULTADO RESTA: "+resultadoResta);
 		System.out.println("RESULTADO MULTIPLICACIÓN: " + resultadoMultiplicacion);
 		System.out.println("RESULTADO DIVISIÓN: "+resultadoDividir);
 		System.out.println("PROMEDIO: "+promedio);
+		calcu.mostrarResultado();
 	}
 
 }

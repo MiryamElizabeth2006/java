@@ -30,4 +30,9 @@ public class Calculadora {
 		promedio = (valor1 + valor2 + valor3)/3;
 		return promedio;
 	}
+	
+	public void mostrarResultado ( ) {
+		String principio = "Ahorita no joven, Sali al almuerzo. Regreso en 15 minutos";
+		System.out.println(principio);
+	}
 }
