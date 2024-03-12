@@ -1,0 +1,14 @@
+package com.krakedev;
+/*
+ * comentartio de varias lineas
+ * 
+ * */
+public class TestPersona {
+
+	public static void main(String[] args) {
+		Persona p; //1.Declaro una variable llamada p de tipo Persona
+		p=new Persona(); //2.Insatancio o creo un objeto Persona , y se referencia a p
+		System.out.println("nombre:"+p.nombre);
+	}
+
+}

@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\mirya\OneDrive\Escritorio\programacion_Elizabeth Nono_krakedev\modulo2\WorkspaceJava\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+3413270776.index
+2830911288.index
