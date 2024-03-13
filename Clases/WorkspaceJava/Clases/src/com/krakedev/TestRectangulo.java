@@ -13,17 +13,17 @@ public class TestRectangulo {
 		double perimetroR1;
 		double perimetroR2;
 	
-		r1.base = 10;
-		r1.altura = 5;
+		r1.setBase(10);
+		r1.setAltura(5);
 		
-		r2.base = 8;
-		r2.altura = 3;
+		r2.setBase(8);
+		r2.setAltura(3);
 		
-		pR1.base = 10;
-		pR1.altura = 5;
+		pR1.setBase(10);
+		pR1.setAltura(5);
 		
-		pR2.base = 8;
-		pR2.altura = 3;
+		pR2.setBase(8);
+		pR2.setAltura(3);
 		
 		areaR1 = r1.calcularArea();
 		areaR2 = r2.calcularArea();
@@ -36,5 +36,4 @@ public class TestRectangulo {
 		System.out.println("El perimetro del R2 es: "+perimetroR2);
 		
 		}
-
 }
