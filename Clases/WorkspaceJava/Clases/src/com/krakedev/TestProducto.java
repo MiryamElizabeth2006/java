@@ -7,6 +7,7 @@ public class TestProducto {
 		Producto productoA = new Producto();
 		Producto productoB = new Producto();
 		Producto productoC = new Producto();
+		Producto productoD = new Producto("Agua Oxigenanda", "1 Lt entero", 3.70, 55);
 		
 		//Modificar con productos de farmacia
 		productoA.setNombre("Fnalin");
@@ -48,6 +49,15 @@ System.out.println("ProductoC");
 		System.out.println("Descripcion: "+productoC.getDescripcion());
 		System.out.println("Precio: "+productoC.getPrecio());
 		System.out.println("Stock Actual: "+productoC.getStockActual());
+		
+		System.out.println("***************************");
+		
+System.out.println("ProductoD");
+		
+		System.out.println("Nombre: "+productoD.getNombre());
+		System.out.println("Descripcion: "+productoD.getDescripcion());
+		System.out.println("Precio: "+productoD.getPrecio());
+		System.out.println("Stock Actual: "+productoD.getStockActual());
 		
 		System.out.println("***************************");
 		
