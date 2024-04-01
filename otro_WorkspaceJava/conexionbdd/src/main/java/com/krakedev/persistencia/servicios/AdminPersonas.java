@@ -199,7 +199,7 @@ public class AdminPersonas {
 				String nombre = rs.getString("nombre");
 				String cedulaP = rs.getString("cedula");
 				String apellido = rs.getString("apellido");
-				//EstadoCivil estadoCivil = rs.getEstadoCvil("estado_civil").getCodigo();
+				String estadoCivil = rs.getString("estado_civil");
 				int numeroHijos = rs.getInt("numero_hijos");
 				double estatura = rs.getDouble("estatura");
 				//BigDecimal cantidadAhorrada = rs.getBigDecimal("cantidad_ahorrada");
@@ -208,11 +208,12 @@ public class AdminPersonas {
 				
 				
 				p = new Persona();
-				
+				EstadoCivil es = new EstadoCivil(estadoCivil);
+				es.getCodigo();	
 				p.setCedula(cedulaP);
 				p.setNombre(nombre);
 				p.setApellido(apellido);
-				//p.setEstadoCivil(estadoCivil);
+				p.setEstadoCivil(es);
 				p.setNumeroHijos(numeroHijos);
 				p.setEstatura(estatura);
 				//p.setCantidadAhorrada(cantidadAhorrada);

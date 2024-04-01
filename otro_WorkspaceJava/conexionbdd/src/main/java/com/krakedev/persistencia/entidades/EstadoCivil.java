@@ -4,18 +4,22 @@ public class EstadoCivil {
 	private String codigo;
 	private String descripcion;
 	
-	public EstadoCivil() {}
-	
+	public EstadoCivil() {
+	}
+	public EstadoCivil(String codigo) {
+		super();
+		this.codigo = codigo;
+	}  
+
 	public EstadoCivil(String codigo, String descripcion) {
 		super();
 		this.codigo = codigo;
 		this.descripcion = descripcion;
 	}
-
+	
 	public String getCodigo() {
 		return codigo;
 	}
-
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
