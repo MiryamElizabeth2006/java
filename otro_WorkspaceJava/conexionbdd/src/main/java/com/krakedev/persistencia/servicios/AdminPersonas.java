@@ -142,26 +142,27 @@ public class AdminPersonas {
 				String nombre = rs.getString("nombre");
 				String cedula = rs.getString("cedula");
 				String apellido = rs.getString("apellido");
-				//EstadoCivil estadoCivil =rs.getEstadoCivil("estado_civil");
+				String estadoCivil = rs.getString("estado_civil");
 				int numeroHijos = rs.getInt("numero_hijos");
 				double estatura = rs.getDouble("estatura");
-				BigDecimal cantidadAhorrada = rs.getBigDecimal("cantidad_ahorrada");
+				//BigDecimal cantidadAhorrada = rs.getBigDecimal("cantidad_ahorrada");
 				Date fechaNacimiento = rs.getDate("fecha_nacimiento");
 				Date horaNacimiento = rs.getTime("hora_nacimiento");
 				
 				Persona p = new Persona();
+				EstadoCivil es = new EstadoCivil(estadoCivil);
+				
 				p.setCedula(cedula);
 				p.setNombre(nombre);
 				p.setApellido(apellido);
-				//p.setEstadoCivil(estadoCivil);
+				p.setEstadoCivil(es);
 				p.setNumeroHijos(numeroHijos);
 				p.setEstatura(estatura);
-				p.setCantidadAhorrada(cantidadAhorrada);
+				//p.setCantidadAhorrada(cantidadAhorrada);
 				p.setFechaNacimiento(fechaNacimiento);
 				p.setHoraNacimiento(horaNacimiento);
 				personas.add(p);
 				
-				System.out.println(cantidadAhorrada);
 			}
 			
 		} catch (Exception e) {
@@ -202,13 +203,15 @@ public class AdminPersonas {
 				String estadoCivil = rs.getString("estado_civil");
 				int numeroHijos = rs.getInt("numero_hijos");
 				double estatura = rs.getDouble("estatura");
-				//BigDecimal cantidadAhorrada = rs.getBigDecimal("cantidad_ahorrada");
+				//BigDecimal cantidad = rs.getBigDecimal("cantidad_ahorrada");
 				Date fechaNacimiento = rs.getDate("fecha_nacimiento");
 				Date horaNacimiento = rs.getTime("hora_nacimiento");
 				
 				
 				p = new Persona();
 				EstadoCivil es = new EstadoCivil(estadoCivil);
+				
+				
 				es.getCodigo();	
 				p.setCedula(cedulaP);
 				p.setNombre(nombre);
@@ -216,9 +219,10 @@ public class AdminPersonas {
 				p.setEstadoCivil(es);
 				p.setNumeroHijos(numeroHijos);
 				p.setEstatura(estatura);
-				//p.setCantidadAhorrada(cantidadAhorrada);
+				//p.setCantidadAhorrada(cantidad);
 				p.setFechaNacimiento(fechaNacimiento);
 				p.setHoraNacimiento(horaNacimiento);
+				
 			
 			}else {
 				return null;

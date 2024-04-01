@@ -13,7 +13,7 @@ public class ConexionBDD {
 	private final static String DRIVER = "org.postgresql.Driver";
 	private final static String URL = "jdbc:postgresql://localhost:5432/postgres";
 	private final static String USUARIO = "postgres";
-	private final static String CLAVE = "basedatoseli2006";
+	private final static String CLAVE = "postgres";
 	private static final Logger LOGGER = LogManager.getLogger(ConexionBDD.class);
 	public static Connection conectar() throws Exception{
 		Connection connection = null;

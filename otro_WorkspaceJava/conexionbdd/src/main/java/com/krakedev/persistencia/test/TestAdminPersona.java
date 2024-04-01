@@ -13,15 +13,16 @@ import com.krakedev.persistencia.utils.Convertidor;
 public class TestAdminPersona {
 
 	public static void main(String[] args) {
-		EstadoCivil ec = new EstadoCivil("U", "Union Libre");
-		Persona p = new Persona("1784529623", "Rosa", "Sanchez", ec);
+		EstadoCivil ec = new EstadoCivil("S", "Soltero");
+		Persona p = new Persona("2578496312", "Mario", "Simarro", ec);
 		try {
-			Date fechaNac = Convertidor.convertirFecha("2002/11/03");
-			Date horaNac = Convertidor.convertirHora("14:30");
+			Date fechaNac = Convertidor.convertirFecha("2000/09/28");
+			Date horaNac = Convertidor.convertirHora("12:25");
 			p.setFechaNacimiento(fechaNac);
 			p.setHoraNacimiento(horaNac);
-			p.setCantidadAhorrada(new BigDecimal(4512.45));
+			p.setCantidadAhorrada(new BigDecimal(789.50));
 			p.setNumeroHijos(0);
+			p.setEstatura(1.75);
 			AdminPersonas.insertar(p);
 		} catch (Exception e) {
 			System.out.println("Error en el sistema: "+e.getMessage());
