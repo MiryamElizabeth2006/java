@@ -191,7 +191,7 @@ public class AdminPersonas {
 		
 		try {
 			con = ConexionBDD.conectar();
-			ps = con.prepareStatement("Select * from personas WHERE cedula = ?");
+			ps = con.prepareStatement(" SELECT cedula, nombre, apellido, estatura, fecha_nacimiento, hora_nacimiento, cast(cantidad_ahorrada as decimal(6,2)), numero_hijos, estado_civil  from personas WHERE cedula = ?");
 			ps.setString(1, cedula);
 			
 			rs = ps.executeQuery();
@@ -203,7 +203,7 @@ public class AdminPersonas {
 				String estadoCivil = rs.getString("estado_civil");
 				int numeroHijos = rs.getInt("numero_hijos");
 				double estatura = rs.getDouble("estatura");
-				//BigDecimal cantidad = rs.getBigDecimal("cantidad_ahorrada");
+				BigDecimal cantidad = rs.getBigDecimal("cantidad_ahorrada");
 				Date fechaNacimiento = rs.getDate("fecha_nacimiento");
 				Date horaNacimiento = rs.getTime("hora_nacimiento");
 				
@@ -219,7 +219,7 @@ public class AdminPersonas {
 				p.setEstadoCivil(es);
 				p.setNumeroHijos(numeroHijos);
 				p.setEstatura(estatura);
-				//p.setCantidadAhorrada(cantidad);
+				p.setCantidadAhorrada(cantidad);
 				p.setFechaNacimiento(fechaNacimiento);
 				p.setHoraNacimiento(horaNacimiento);
 				
