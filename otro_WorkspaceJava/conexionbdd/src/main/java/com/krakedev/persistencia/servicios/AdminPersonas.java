@@ -1,13 +1,18 @@
 package com.krakedev.persistencia.servicios;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.krakedev.persistencia.entidades.EstadoCivil;
 import com.krakedev.persistencia.entidades.Persona;
 import com.krakedev.persistencia.utils.ConexionBDD;
 
@@ -116,4 +121,122 @@ public class AdminPersonas {
 			
 		}
 	}
+	
+	//Buscar POR NOMBRE RETORNA Lista de Personas
+	
+	public static ArrayList<Persona> buscarPorNombre(String nombreBusqueda) throws Exception{
+		ArrayList<Persona> personas= new ArrayList<Persona>();
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ConexionBDD.conectar();
+			ps = con.prepareStatement("Select * from personas WHERE nombre LIKE ?");
+			ps.setString(1, "%"+nombreBusqueda+"%");
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String nombre = rs.getString("nombre");
+				String cedula = rs.getString("cedula");
+				String apellido = rs.getString("apellido");
+				//EstadoCivil estadoCivil =rs.getEstadoCivil("estado_civil");
+				int numeroHijos = rs.getInt("numero_hijos");
+				double estatura = rs.getDouble("estatura");
+				BigDecimal cantidadAhorrada = rs.getBigDecimal("cantidad_ahorrada");
+				Date fechaNacimiento = rs.getDate("fecha_nacimiento");
+				Date horaNacimiento = rs.getTime("hora_nacimiento");
+				
+				Persona p = new Persona();
+				p.setCedula(cedula);
+				p.setNombre(nombre);
+				p.setApellido(apellido);
+				//p.setEstadoCivil(estadoCivil);
+				p.setNumeroHijos(numeroHijos);
+				p.setEstatura(estatura);
+				p.setCantidadAhorrada(cantidadAhorrada);
+				p.setFechaNacimiento(fechaNacimiento);
+				p.setHoraNacimiento(horaNacimiento);
+				personas.add(p);
+				
+				System.out.println(cantidadAhorrada);
+			}
+			
+		} catch (Exception e) {
+			LOGGER.trace("No se encontro", e);
+			throw  new Exception("No se encontro");
+		}finally {
+			try {
+				con.close();
+			}catch(SQLException e) {
+				LOGGER.error("Error en la base de Datos",e);
+				throw new Exception("Error en la base de Datos");
+			}
+			
+		}
+		
+		return personas;
+	}
+	
+	//Buscar por Cedula retorna Una Persona
+	
+	public static Persona buscarPorCedula(String cedula) throws Exception {	
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Persona p = new Persona();
+		
+		try {
+			con = ConexionBDD.conectar();
+			ps = con.prepareStatement("Select * from personas WHERE cedula = ?");
+			ps.setString(1, cedula);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				String nombre = rs.getString("nombre");
+				String cedulaP = rs.getString("cedula");
+				String apellido = rs.getString("apellido");
+				//EstadoCivil estadoCivil = rs.getEstadoCvil("estado_civil").getCodigo();
+				int numeroHijos = rs.getInt("numero_hijos");
+				double estatura = rs.getDouble("estatura");
+				//BigDecimal cantidadAhorrada = rs.getBigDecimal("cantidad_ahorrada");
+				Date fechaNacimiento = rs.getDate("fecha_nacimiento");
+				Date horaNacimiento = rs.getTime("hora_nacimiento");
+				
+				
+				p = new Persona();
+				
+				p.setCedula(cedulaP);
+				p.setNombre(nombre);
+				p.setApellido(apellido);
+				//p.setEstadoCivil(estadoCivil);
+				p.setNumeroHijos(numeroHijos);
+				p.setEstatura(estatura);
+				//p.setCantidadAhorrada(cantidadAhorrada);
+				p.setFechaNacimiento(fechaNacimiento);
+				p.setHoraNacimiento(horaNacimiento);
+			
+			}else {
+				return null;
+			}
+			
+		} catch (Exception e) {
+			LOGGER.error("No se encontro",e);
+			throw new Exception("No se encontro");
+		}finally {
+			try {
+				con.close();
+			}catch(SQLException e) {
+				LOGGER.error("Error en la base de Datos",e);
+				throw new Exception("Error en la base de Datos");
+			}
+			
+		}
+
+		return p;
+	}
+	
 }
