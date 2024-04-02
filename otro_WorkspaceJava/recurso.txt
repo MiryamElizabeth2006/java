@@ -1,0 +1,170 @@
+package com.krakedev.inventario.entidades;
+
+public class Producto {
+	private String codigo;
+	private String nombre;
+	private Categoria categoria;
+	private double precio;
+	private int stock;
+	
+	
+	
+	
+	public Producto(String codigo, String nombre, Categoria categoria, double precio, int stock) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.categoria = categoria;
+		this.precio = precio;
+		this.stock = stock;
+	}
+	
+	
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Producto [codigo=" + codigo + ", nombre=" + nombre + ", categoria=" + categoria + ", precio=" + precio
+				+ ", stock=" + stock + "]";
+	}
+	
+	
+	
+}
+----------------------------------------------------------------------------------------
+package com.krakedev.inventario.entidades;
+
+public class Categoria {
+	private int codigo;
+	private String nombre;
+	public int getCodigo() {
+		return codigo;
+		
+	}
+	public Categoria(int codigo, String nombre) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+	}
+	
+	
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	@Override
+	public String toString() {
+		return "Categoria [codigo=" + codigo + ", nombre=" + nombre + "]";
+	}
+	
+	
+}
+-------------------------------------------------------------------------------------
+package com.krakedev.inventario.servicios;
+
+import java.util.ArrayList;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.krakedev.inventario.entidades.Categoria;
+import com.krakedev.inventario.entidades.Producto;
+
+@Path ("productos")
+public class ServiciosProductos {
+	
+	@Path ("insertar")
+	@POST
+	@Consumes (MediaType.APPLICATION_JSON)
+	public void insertar(Producto producto) {
+		System.out.println(producto);
+	}
+	
+	@Path ("actualizar")
+	@PUT
+	@Consumes (MediaType.APPLICATION_JSON)
+	public void actualizar(Producto producto) {
+		System.out.println(producto);
+	}
+	
+	@Path ("recuperar")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public static ArrayList<Producto> recuperarTodo() {
+		Categoria c1 = new Categoria(001,"Jamon");
+		Producto p1 = new Producto("001", "Jamón", c1, 5.26,20 );
+		
+		Categoria c2 = new Categoria(002,"Pollo");
+		Producto p2 = new Producto("002", "Pollo", c2, 5.26,20 );
+		
+		Categoria c3 = new Categoria(003,"Carne de res");
+		Producto p3 = new Producto("003", "Carne de res", c3, 5.26,20 );
+		
+		ArrayList<Producto> productos =  new ArrayList<Producto>();
+		productos.add(p1);
+		productos.add(p2);
+		productos.add(p3);
+		
+		return productos;
+	}
+}
+----------------------------------------------------------------------------------------
+package com.krakedev.inventario.servicios;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+
+import com.krakedev.inventario.entidades.Categoria;
+
+@Path ("customers")
+public class ServiciosCategoria {
+	
+	@Path ("insertarCategoria")
+	@POST
+	@Consumes (MediaType.APPLICATION_JSON)
+	public void insertar(Categoria categoria) {
+		System.out.println(categoria);
+	}
+}
