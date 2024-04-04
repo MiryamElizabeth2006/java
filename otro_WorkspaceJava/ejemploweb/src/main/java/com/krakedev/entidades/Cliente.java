@@ -5,14 +5,14 @@ public class Cliente {
 	private String nombre;
 	private int numeroHijos;
 	
-	public Cliente() {
-		
+	public Cliente() {	
 	}
 	
-	public Cliente(String cedula, String nombre) {
+	public Cliente(String cedula, String nombre, int numeroHijos) {
 		super();
 		this.cedula = cedula;
 		this.nombre = nombre;
+		this.numeroHijos = numeroHijos;
 	}
 	
 	

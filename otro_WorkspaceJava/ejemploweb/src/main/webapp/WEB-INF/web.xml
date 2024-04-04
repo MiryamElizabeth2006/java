@@ -14,12 +14,10 @@
    </servlet>
    <servlet-mapping>
    		<servlet-name>MiServlet</servlet-name>
-   		<url-pattern>/rws/*</url-pattern>
+   		<url-pattern>/restws/*</url-pattern>
    	</servlet-mapping>
    
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
 </web-app>
