@@ -1,5 +1,6 @@
 package com.krakedev.persistencia.entidades;
 import java.math.BigDecimal;
+
 import java.util.Date;
 public class Transacciones {
 	private int codigo;
